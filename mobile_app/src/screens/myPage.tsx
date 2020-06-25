@@ -36,7 +36,7 @@ const Mypage = ({
     }
   };
   const renderAuthInfo = () => {
-    if (!isOauthLogin) {
+    if (isOauthLogin === 0) {
       return (
         <React.Fragment>
           <EmailView>

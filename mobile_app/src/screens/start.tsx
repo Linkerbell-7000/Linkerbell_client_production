@@ -32,6 +32,7 @@ const Start = ({
   const handleGoogleLogin = async () => {
     try {
       const res = await loginWithGoogleApiRequest();
+      console.log(res);
       if (res) {
         res.status === 200 && onOauthLogin(res.data);
       }

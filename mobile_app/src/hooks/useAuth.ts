@@ -18,9 +18,7 @@ export default function useAuth() {
   const gender = useSelector((state: RootState) => state.auth.gender);
   const err = useSelector((state: RootState) => state.auth.err);
   const isLogin = useSelector((state: RootState) => state.auth.isLogin);
-  const isOauthLogin = useSelector(
-    (state: RootState) => state.auth.isOauthLogin,
-  );
+  const isOauthLogin = useSelector((state: RootState) => state.auth.isOauth);
   const dispatch = useDispatch();
 
   const onLogin = useCallback(
