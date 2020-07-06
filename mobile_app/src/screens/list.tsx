@@ -148,8 +148,8 @@ const List = ({ route, navigation }: ListProps): JSX.Element => {
     setValue({ ...value, orderType: order });
   };
 
-  const handleEditCategoryModal = (id: number) => {
-    setCurrentLinkId(id);
+  const handleEditCategoryModal = (linkData: Url) => {
+    setCurrentLink(linkData);
     setModalVisible(true);
   };
   const handleEditTagModal = (linkData: Url) => {
@@ -195,7 +195,7 @@ const List = ({ route, navigation }: ListProps): JSX.Element => {
         <EditCategoryModal
           isVisible={isModalVisible}
           toggleModal={closeModal}
-          currentLinkId={currentLinkId}
+          currentLink={currentLink}
         />
         <EditTagModal
           isVisible={isEdigTagModalVisible}
@@ -205,7 +205,6 @@ const List = ({ route, navigation }: ListProps): JSX.Element => {
         <DeleteLinkModal
           isVisible={isDeleteLinkModalVisible}
           toggleModal={closeDeleteModal}
-          currentLinkId={currentLinkId}
           currentLink={currentLink}
         />
       </Container>

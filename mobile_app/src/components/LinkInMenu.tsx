@@ -38,7 +38,7 @@ const LinkInMenu = ({
     >
       <TouchableOpacity
         style={renderBtnStyle("#525252", 0.5)}
-        onPress={() => onCategoryEdit(id)}
+        onPress={() => onCategoryEdit(data)}
       >
         <AntDesign
           name="swap"
