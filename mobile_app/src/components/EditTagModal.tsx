@@ -18,7 +18,7 @@ const { TagModal, InputForm, InputWrapper, HashTag, AddBtn } = styled;
 type Props = {
   isVisible: boolean;
   toggleModal: () => void;
-  currentLink: Url;
+  currentLink?: Url;
 };
 const EditTagModal = ({
   isVisible,

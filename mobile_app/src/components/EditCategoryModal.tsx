@@ -2,7 +2,7 @@ import React from "react";
 import { FlatList } from "react-native";
 import Modal from "react-native-modal";
 import CategoryItem from "../components/CategoryItem";
-
+import { Url } from "../models/UrlStateTypes";
 import styled from "../styles/EditCategoryModalStyles/index";
 
 const { CategoryModal, Title } = styled;
@@ -32,13 +32,13 @@ const numColumns = 4;
 type Props = {
   isVisible: boolean;
   toggleModal: () => void;
-  currentLinkId: number;
+  currentLink?: Url;
 };
 
 const EditCategoryModal = ({
   isVisible,
   toggleModal,
-  currentLinkId,
+  currentLink,
 }: Props): JSX.Element => {
   return (
     <Modal
@@ -54,7 +54,7 @@ const EditCategoryModal = ({
           renderItem={({ item }) => (
             <CategoryItem
               item={item}
-              linkId={currentLinkId}
+              linkId={currentLink.id}
               closeModal={toggleModal}
             />
           )}

@@ -8,16 +8,9 @@ import { LinkBox } from "../styles/listStyles/Linkbox";
 import LinkInMenu from "../components/LinkInMenu";
 type Props = {
   data: Url;
-  onCategoryEdit: () => void;
-  onTagEdit: () => void;
-  onDeleteLink: () => void;
+  onModal: (linkData: Url, modalType: string) => void;
 };
-const link = ({
-  data,
-  onCategoryEdit,
-  onTagEdit,
-  onDeleteLink,
-}: Props): JSX.Element => {
+const link = ({ data, onModal }: Props): JSX.Element => {
   const [isSwipe, setSwipe] = useState(false);
 
   const handleSwipe = (bool: boolean): void => {
@@ -31,13 +24,7 @@ const link = ({
           <LinkContents data={data} isSwipe={isSwipe} />
         </LinkBox>
       </SwipeLink>
-      <LinkInMenu
-        onCategoryEdit={onCategoryEdit}
-        onTagEdit={onTagEdit}
-        id={data.id}
-        data={data}
-        onDeleteLink={onDeleteLink}
-      />
+      <LinkInMenu onModal={onModal} data={data} />
     </View>
   );
 };
