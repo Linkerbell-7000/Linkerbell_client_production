@@ -28,7 +28,11 @@ export type value = {
 type ListProps = {
   route: any;
 };
-
+type Modals = {
+  edit_tag: boolean;
+  edit_category: boolean;
+  delete_link: boolean;
+};
 const List = ({ route, navigation }: ListProps): JSX.Element => {
   const [value, setValue] = useState<value>({
     cur_tag: "All",
@@ -39,11 +43,14 @@ const List = ({ route, navigation }: ListProps): JSX.Element => {
     text: "",
     orderType: "asc",
   });
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [isEdigTagModalVisible, setEdigTagModalVisible] = useState(false);
-  const [currentLinkId, setCurrentLinkId] = useState(0);
+  const [isModalVisible, setModalVisible] = useState<Modals>({
+    edit_tag: false,
+    edit_category: false,
+    delete_link: false,
+  });
+  // const [isEdigTagModalVisible, setEdigTagModalVisible] = useState(false);
   const [currentLink, setCurrentLink] = useState<Url>();
-  const [isDeleteLinkModalVisible, setDeleteLinkModalVisible] = useState(false);
+  // const [isDeleteLinkModalVisible, setDeleteLinkModalVisible] = useState(false);
   const {
     all_category_url_list,
     categories_url_list,
@@ -148,27 +155,25 @@ const List = ({ route, navigation }: ListProps): JSX.Element => {
     setValue({ ...value, orderType: order });
   };
 
-  const handleEditCategoryModal = (linkData: Url) => {
+  const handleModal = (linkData: Url, modalType: string) => {
     setCurrentLink(linkData);
-    setModalVisible(true);
+    if (modalType === "edit_category") {
+      setModalVisible({ ...isModalVisible, edit_category: true });
+    } else if (modalType === "edit_tag") {
+      setModalVisible({ ...isModalVisible, edit_tag: true });
+    } else if (modalType === "delete_link") {
+      setModalVisible({ ...isModalVisible, delete_link: true });
+    }
   };
-  const handleEditTagModal = (linkData: Url) => {
-    setCurrentLink(linkData);
-    setEdigTagModalVisible(true);
-  };
+
   const closeModal = () => {
-    setModalVisible(false);
+    setModalVisible({
+      edit_category: false,
+      edit_tag: false,
+      delete_link: false,
+    });
   };
-  const closeTagEditModal = () => {
-    setEdigTagModalVisible(false);
-  };
-  const handleDeleteLinkModal = (linkData: Url) => {
-    setCurrentLink(linkData);
-    setDeleteLinkModalVisible(true);
-  };
-  const closeDeleteModal = () => {
-    setDeleteLinkModalVisible(false);
-  };
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container OS={Platform.OS}>
@@ -186,25 +191,20 @@ const List = ({ route, navigation }: ListProps): JSX.Element => {
           tags={value.tags}
           onPress={handlePress}
         />
-        <LinkList
-          list={value.cur_list}
-          onCategoryEdit={handleEditCategoryModal}
-          onTagEdit={handleEditTagModal}
-          onDeleteLink={handleDeleteLinkModal}
-        />
+        <LinkList list={value.cur_list} onModal={handleModal} />
         <EditCategoryModal
-          isVisible={isModalVisible}
+          isVisible={isModalVisible.edit_category}
           toggleModal={closeModal}
           currentLink={currentLink}
         />
         <EditTagModal
-          isVisible={isEdigTagModalVisible}
-          toggleModal={closeTagEditModal}
+          isVisible={isModalVisible.edit_tag}
+          toggleModal={closeModal}
           currentLink={currentLink}
         />
         <DeleteLinkModal
-          isVisible={isDeleteLinkModalVisible}
-          toggleModal={closeDeleteModal}
+          isVisible={isModalVisible.delete_link}
+          toggleModal={closeModal}
           currentLink={currentLink}
         />
       </Container>

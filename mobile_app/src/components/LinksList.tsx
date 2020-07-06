@@ -1,26 +1,17 @@
 import React from "react";
 import { FlatList, Platform } from "react-native";
 import Link from "../components/Link";
+import { Url } from "../models/UrlStateTypes";
+type Props = {
+  list: Url[];
+  onModal: (linkData: Url, modalType: string) => void;
+};
 
-const LinkList = ({
-  list,
-  onCategoryEdit,
-  onTagEdit,
-  onDeleteLink,
-}): JSX.Element => {
+const LinkList = ({ list, onModal }: Props): JSX.Element => {
   return (
     <FlatList
       data={list}
-      renderItem={({ item }) => (
-        <Link
-          data={item}
-          onCategoryEdit={onCategoryEdit}
-          onTagEdit={onTagEdit}
-          onDeleteLink={onDeleteLink}
-        >
-          {item.title}
-        </Link>
-      )}
+      renderItem={({ item }) => <Link data={item} onModal={onModal} />}
       keyExtractor={(item) => item.id.toString()}
       style={{
         marginLeft: 0,

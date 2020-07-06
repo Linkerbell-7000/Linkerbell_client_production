@@ -3,15 +3,13 @@ import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Fontisto } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-
-const LinkInMenu = ({
-  onCategoryEdit,
-  onTagEdit,
-  id,
-  data,
-  onDeleteLink,
-}): JSX.Element => {
-  const renderBtnStyle = (color: string, border?: number) => {
+import { Url } from "../models/UrlStateTypes";
+type Props = {
+  onModal: (linkData: Url, modalType: string) => void;
+  data: Url;
+};
+const LinkInMenu = ({ onModal, data }: Props): JSX.Element => {
+  const renderBtnStyle = (color: string) => {
     return {
       width: 80,
       height: 70,
@@ -25,7 +23,6 @@ const LinkInMenu = ({
       style={{
         flex: 1,
         flexDirection: "row",
-        // backgroundColor: "green",
         justifyContent: "flex-end",
         position: "absolute",
         width: 375,
@@ -37,8 +34,8 @@ const LinkInMenu = ({
       }}
     >
       <TouchableOpacity
-        style={renderBtnStyle("#525252", 0.5)}
-        onPress={() => onCategoryEdit(data)}
+        style={renderBtnStyle("#525252")}
+        onPress={() => onModal(data, "edit_category")}
       >
         <AntDesign
           name="swap"
@@ -60,7 +57,7 @@ const LinkInMenu = ({
       </TouchableOpacity>
       <TouchableOpacity
         style={renderBtnStyle("#525252")}
-        onPress={() => onTagEdit(data)}
+        onPress={() => onModal(data, "edit_tag")}
       >
         <Fontisto
           name="hashtag"
@@ -75,7 +72,6 @@ const LinkInMenu = ({
             color: "#fff",
             fontFamily: "NMedium",
             alignSelf: "center",
-            lineHeight: 18,
           }}
         >
           태그
@@ -83,7 +79,7 @@ const LinkInMenu = ({
       </TouchableOpacity>
       <TouchableOpacity
         style={renderBtnStyle("#ff6c6c")}
-        onPress={() => onDeleteLink(data)}
+        onPress={() => onModal(data, "delete_link")}
       >
         <AntDesign
           name="delete"
