@@ -48,9 +48,7 @@ const List = ({ route, navigation }: ListProps): JSX.Element => {
     edit_category: false,
     delete_link: false,
   });
-  // const [isEdigTagModalVisible, setEdigTagModalVisible] = useState(false);
   const [currentLink, setCurrentLink] = useState<Url>();
-  // const [isDeleteLinkModalVisible, setDeleteLinkModalVisible] = useState(false);
   const {
     all_category_url_list,
     categories_url_list,
@@ -59,7 +57,8 @@ const List = ({ route, navigation }: ListProps): JSX.Element => {
   } = useLinkData();
   const { isDataLoading } = useApp();
   const filterLinkByTag = (list: Url[]) => {
-    const { cur_tag } = value;
+    const { cur_tag, orderType } = value;
+    list = sortLink(list, orderType);
     if (cur_tag === "All") return list;
     else {
       return _.filter(list, (link) => _.includes(link.tags, cur_tag));
