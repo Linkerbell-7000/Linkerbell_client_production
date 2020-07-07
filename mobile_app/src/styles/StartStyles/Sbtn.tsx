@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
 
 type Props = {
-  OS: string;
   route: "google" | "email" | "facebook";
+  screenWidth: number;
+  screenHeight: number;
 };
 const renderLoginBtn = (route: string) => {
   let backgroundColor = "#fff";
@@ -11,9 +12,9 @@ const renderLoginBtn = (route: string) => {
   return backgroundColor;
 };
 export const LoginBtn = styled.TouchableOpacity`
-  width: 320px;
-  height: 50px;
-  margin-top: 24px;
+  width: ${(props: Props) => props.screenWidth * 0.8}px;
+  height: ${(props: Props) => props.screenHeight * 0.065}px;
+  margin-top: ${(props: Props) => (props.screenHeight * 0.065) / 2.2}px;
   border-width: 2px;
   background-color: ${(props: Props) => renderLoginBtn(props.route)};
   border: 2px;
@@ -30,7 +31,7 @@ export const LoginLabel = styled.Text`
 `;
 export const LinkToBox = styled.View`
   flex-direction: row;
-  margin-top: 28px;
+  margin-top: ${(props: Props) => props.screenHeight * 0.036}px;
   align-self: center;
   justify-content: center;
 `;
