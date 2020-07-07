@@ -24,14 +24,20 @@ const LoginBtn = ({ state, name, onPress }: Props): JSX.Element => {
       return (
         <Btn
           onPress={() => onPress(state)}
-          height={Dimensions.get("window").height}
+          screenHeight={Dimensions.get("screen").height}
+          screenWidth={Dimensions.get("screen").width}
         >
           <BtnText>{renderBtnText()}</BtnText>
         </Btn>
       );
     }
     return (
-      <Btn isEmpty disabled={true} height={Dimensions.get("window").height}>
+      <Btn
+        isEmpty
+        disabled={true}
+        screenHeight={Dimensions.get("screen").height}
+        screenWidth={Dimensions.get("screen").width}
+      >
         <BtnText isEmpty>{renderBtnText()}</BtnText>
       </Btn>
     );
