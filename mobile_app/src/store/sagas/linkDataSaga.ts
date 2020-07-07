@@ -33,7 +33,6 @@ function* fetchAllList$() {
   }
 }
 function* updateCategoriesList$(action: any) {
-  // const { AllList } = action.payload;
   try {
     const { AllList } = action.payload;
     yield fetchList$(AllList);
@@ -49,44 +48,22 @@ function* updateCategoriesList$(action: any) {
 
 function* fetchList$(lists: Url[]) {
   try {
-    // console.log("실행");
     const categories_url_list: Category_url_list = {};
     const favorite_list: Url[] = [];
-    let all_tags: string[] = [];
-    const catgories_tags: { [index: number]: string[] } = {};
+    const all_tags: string[] = [];
+    const categories_tags: { [index: number]: string[] } = {};
     yield _.forEach(lists, (item: Url) => {
-      const { category_id } = item;
-      item.favorite && favorite_list.push(item);
-
-      if (categories_url_list[category_id]) {
-        categories_url_list[category_id].push(item);
-      } else {
-        categories_url_list[category_id] = [];
-        categories_url_list[category_id].push(item);
-      }
-
-      if (item.tags) {
-        all_tags = [...all_tags, ...item.tags];
-        if (catgories_tags[category_id]) {
-          catgories_tags[category_id] = [
-            ...catgories_tags[category_id],
-            ...item.tags,
-          ];
-        } else {
-          catgories_tags[category_id] = [];
-          catgories_tags[category_id] = [
-            ...catgories_tags[category_id],
-            ...item.tags,
-          ];
-        }
-      }
+      const { category_id, tags, favorite } = item;
+      favorite && favorite_list.push(item);
+      categorise(categories_url_list, item, category_id);
+      categoriseTags(categories_tags, all_tags, tags, category_id);
     });
     yield put({
       type: FETCH_CATEGORIES_URL_LIST,
       payload: { categories_url_list },
     });
     yield categoriseFavList(favorite_list);
-    yield categoriseTagList(all_tags, catgories_tags);
+    yield categoriseTagList(all_tags, categories_tags);
   } catch (e) {
     console.log(e);
   }
@@ -113,4 +90,34 @@ function* categoriseTagList(
     type: CATEGORISE_TAG_LIST,
     payload: { all_tag_list, categories_tag_list },
   });
+}
+
+function categorise(
+  categories_url_list: Category_url_list,
+  item: Url,
+  category_id: number,
+) {
+  if (categories_url_list[category_id]) {
+    categories_url_list[category_id].push(item);
+  } else {
+    categories_url_list[category_id] = [];
+    categories_url_list[category_id].push(item);
+  }
+}
+
+function categoriseTags(
+  categories_tags: { [index: number]: string[] },
+  all_tags: string[],
+  tags: string[],
+  category_id: number,
+) {
+  if (tags) {
+    all_tags = [...all_tags, ...tags];
+    if (categories_tags[category_id]) {
+      categories_tags[category_id] = [...categories_tags[category_id], ...tags];
+    } else {
+      categories_tags[category_id] = [];
+      categories_tags[category_id] = [...categories_tags[category_id], ...tags];
+    }
+  }
 }
