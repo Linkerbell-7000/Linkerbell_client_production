@@ -41,7 +41,7 @@ const Login = ({
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>
-        <MainText OS={Platform.OS}>로그인하기</MainText>
+        <MainText>로그인하기</MainText>
         <Input
           name="email"
           value={value}
