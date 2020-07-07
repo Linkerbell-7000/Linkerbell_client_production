@@ -9,4 +9,5 @@ export const Container = styled.View`
   top: 0px;
   background-color: #fff;
   align-items: center;
+  justify-content: center;
 `;
