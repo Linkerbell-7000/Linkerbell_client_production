@@ -5,10 +5,12 @@ type Props = {
 };
 export const LinkModal = styled.View`
   position: absolute;
-  bottom: -30px;
-  height: 330px;
+  bottom: -4%;
+  flex: 1;
+  margin: 0px;
+  padding: 0px;
+  height: 45%;
   border-radius: 16px;
   width: ${(props: Props) => props.width}px;
   background-color: #fff;
-  left: -20px;
 `;

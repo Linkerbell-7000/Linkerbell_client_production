@@ -79,8 +79,12 @@ const AddLinkModal = ({
     }
   };
   return (
-    <Modal isVisible={isVisible} onBackdropPress={toggleModal}>
-      <LinkModal width={Dimensions.get("window").width}>
+    <Modal
+      isVisible={isVisible}
+      onBackdropPress={toggleModal}
+      style={{ margin: 0 }}
+    >
+      <LinkModal width={Dimensions.get("screen").width}>
         <MainText>{renderMessage()}</MainText>
         <UrlText>{sliceText(text, 50)}</UrlText>
         <SubText>
