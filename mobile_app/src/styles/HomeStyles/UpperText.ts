@@ -9,7 +9,7 @@ export const UpperText = styled.Text`
   line-height: ${20 * 1.5}px;
   padding: 0px;
   margin: 0px;
-  margin-left: 36px;
-  margin-top: ${(props: Props) => (props.OS === "ios" ? "80px" : "80px")};
+  margin-top: 24%;
+  margin-left: 9%;
   color: #000;
 `;

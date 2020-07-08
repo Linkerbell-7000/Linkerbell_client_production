@@ -1,38 +1,33 @@
-export type Category = {
-  name: string;
-  emoji: string;
-};
-
 export type Categories = {
   //* interface 에서 type으로 바꾸니 에러 해결됨
   // name: string;
   // emoji: string;
-  [index: number]: Category;
+  [index: number]: string;
 };
 
-export const renderCategoryText = (category_id: number): Category | string => {
+export const renderCategoryText = (category_id: number): string => {
   const category_object: Categories = {
-    1: { name: "문화·예술", emoji: "🎨" },
-    2: { name: "자동차", emoji: "🚙" },
-    3: { name: "비즈니스", emoji: "💼" },
-    4: { name: "교육·Job", emoji: "📚" },
-    5: { name: "가족", emoji: "👨‍👩‍👧‍👦" },
-    6: { name: "금융·부동산", emoji: "📈" },
-    7: { name: "음식", emoji: "🥘" },
-    8: { name: "여행", emoji: "🏝" },
-    9: { name: "건강", emoji: "💪" },
-    10: { name: "취미", emoji: "🤸‍♀️" },
-    11: { name: "리빙", emoji: "🏡" },
-    12: { name: "법률·정치", emoji: "⚖️" },
-    13: { name: "뉴스", emoji: "🗞️" },
-    14: { name: "사회", emoji: "🏙" },
-    15: { name: "종교", emoji: "🙏" },
-    16: { name: "컴퓨터·IT", emoji: "💻" },
-    17: { name: "과학", emoji: "🧪" },
-    18: { name: "쇼핑", emoji: "🛍️" },
-    19: { name: "패션", emoji: "👗" },
-    20: { name: "스포츠", emoji: "⚽️" },
-    21: { name: "기타", emoji: "🤯" },
+    1: "문화·예술",
+    2: "자동차",
+    3: "비즈니스",
+    4: "교육·Job",
+    5: "가족",
+    6: "금융·부동산",
+    7: "음식",
+    8: "여행",
+    9: "건강",
+    10: "취미",
+    11: "리빙",
+    12: "법률·정치",
+    13: "뉴스",
+    14: "사회",
+    15: "종교",
+    16: "컴퓨터·IT",
+    17: "과학",
+    18: "쇼핑",
+    19: "패션",
+    20: "스포츠",
+    21: "기타",
   };
   return category_object[category_id];
 };
@@ -40,7 +35,6 @@ export const renderCategoryName = (category_id = 0): string => {
   if (category_id === 0) {
     return "전체글";
   }
-  const { emoji, name } = renderCategoryText(category_id);
-  const title = `${emoji} ${name}`;
+  const title = renderCategoryText(category_id);
   return title;
 };
