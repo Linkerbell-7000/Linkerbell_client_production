@@ -4,6 +4,6 @@ export const CategoryText = styled.Text`
   font-family: "NBold";
   font-size: 22px;
   line-height: ${22 * 1.5}px;
-  margin-left: 10%;
+  margin-left: 9%;
   color: #000000;
 `;

@@ -9,7 +9,7 @@ export const TagModal = styled.View`
   align-self: center;
   top: 20%;
   bottom: 0px;
-  height: 188px;
+  height: 28%;
   border-radius: 8px;
   width: 100%;
   background-color: #fff;

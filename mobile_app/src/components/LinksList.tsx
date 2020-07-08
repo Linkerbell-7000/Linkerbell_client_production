@@ -15,7 +15,8 @@ const LinkList = ({ list, onModal }: Props): JSX.Element => {
       keyExtractor={(item) => item.id.toString()}
       style={{
         marginLeft: 0,
-        marginBottom: 20,
+        marginBottom: "5%",
+        marginTop: "10%",
       }}
       showsVerticalScrollIndicator={Platform.OS === "ios" ? false : true}
       contentContainerStyle={{ paddingBottom: 40 }}

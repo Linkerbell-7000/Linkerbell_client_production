@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
 
 export const LogOutBtn = styled.TouchableOpacity`
-  margin-left: 36px;
-  margin-top: 32px;
+  margin-left: 9%;
+  margin-top: 8%;
 `;
 
 export const LogOutText = styled.Text`

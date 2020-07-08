@@ -16,14 +16,20 @@ const EditPWBtn = ({ state, onPress }: Props): JSX.Element => {
       return (
         <Btn
           onPress={() => onPress(state)}
-          height={Dimensions.get("window").height}
+          screenHeight={Dimensions.get("window").height}
+          screenWidth={Dimensions.get("window").width}
         >
           <BtnText>수정</BtnText>
         </Btn>
       );
     }
     return (
-      <Btn isEmpty disabled={true} height={Dimensions.get("window").height}>
+      <Btn
+        isEmpty
+        disabled={true}
+        screenHeight={Dimensions.get("window").height}
+        screenWidth={Dimensions.get("window").width}
+      >
         <BtnText isEmpty>수정</BtnText>
       </Btn>
     );

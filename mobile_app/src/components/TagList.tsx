@@ -24,7 +24,7 @@ const TagItem = ({ currentTag, tags, onPress }: Props): JSX.Element => {
       keyExtractor={(item) => item}
       horizontal
       showsHorizontalScrollIndicator={false}
-      style={{ marginLeft: 36, marginBottom: 44, flexGrow: 0, height: 40 }}
+      style={{ marginLeft: "9%", flexGrow: 0 }}
     />
   );
 };
