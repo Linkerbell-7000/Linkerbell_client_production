@@ -9,9 +9,10 @@ export const CategoryModal = styled.View`
   position: absolute;
   align-self: center;
   justify-content: center;
-  height: 70%;
+  height: 62%;
   border-radius: 16px;
-  width: 98%;
+  overflow: hidden;
+  width: 100%;
   background-color: #fff;
 `;
 

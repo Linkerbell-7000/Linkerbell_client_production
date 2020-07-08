@@ -24,7 +24,7 @@ const CategoryItem = ({ linkId, item, closeModal }: Props): JSX.Element => {
   const handlePress = async () => {
     try {
       onEditCategory(linkId, category_id);
-      await editCategoryApi(linkId, category_id)
+      await editCategoryApi(linkId, category_id);
       closeModal();
       const categories = await fetchCategoryRequest();
       await sortCategory(categories);
@@ -36,7 +36,6 @@ const CategoryItem = ({ linkId, item, closeModal }: Props): JSX.Element => {
 
   return (
     <CategoryTouch onPress={handlePress} item={item}>
-      <Emoji>{item.emoji}</Emoji>
       <NameText>{item.name}</NameText>
     </CategoryTouch>
   );
