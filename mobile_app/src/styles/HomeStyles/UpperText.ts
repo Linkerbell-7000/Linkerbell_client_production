@@ -11,5 +11,5 @@ export const UpperText = styled.Text`
   margin: 0px;
   margin-top: 24%;
   margin-left: 9%;
-  color: #000;
+  color: ${(props) => props.theme.MainTextColor};
 `;

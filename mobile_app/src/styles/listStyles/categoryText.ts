@@ -5,5 +5,5 @@ export const CategoryText = styled.Text`
   font-size: 22px;
   line-height: ${22 * 1.5}px;
   margin-left: 9%;
-  color: #000000;
+  color: ${(props) => props.theme.MainTextColor};
 `;

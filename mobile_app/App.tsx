@@ -8,12 +8,10 @@ import * as eva from "@eva-design/eva";
 import { ApplicationProvider } from "@ui-kitten/components";
 import firebase from "firebase";
 import { firebaseConfig } from "./config";
-
 firebase.initializeApp(firebaseConfig);
 
 export default function App(): JSX.Element {
   const [isReady, setReady] = useState(false);
-
   const getFonts = () => {
     return Font.loadAsync({
       NMedium: require("./assets/fonts/NotoSansKR-Medium.otf"),

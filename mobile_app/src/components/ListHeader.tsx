@@ -3,6 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 import styled from "../styles/listStyles/index";
 import SortButton from "../components/SortButton";
+import useApp from "../hooks/useApp";
 const { CategoryText, SearchInput, SearchContainer } = styled;
 
 type Props = {
@@ -21,6 +22,7 @@ const HeaderContainer = ({
   length,
 }: Props): JSX.Element => {
   const [isSearchable, setSearchable] = useState(false);
+  const { isDarkmode } = useApp();
   const handleBlur = () => {
     setSearchable(false);
     !length && onTextChange("");
@@ -31,7 +33,7 @@ const HeaderContainer = ({
         <EvilIcons
           name="search"
           size={32}
-          color="#000"
+          color={isDarkmode ? "#fff" : "#000"}
           style={{
             position: "absolute",
             backgroundColor: "transparent",

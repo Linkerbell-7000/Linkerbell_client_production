@@ -12,7 +12,7 @@ export const CategoryText = styled.Text`
   letter-spacing: -0.3px;
   /* margin-top: 0px; */
   margin-left: 0px;
-  color: #000;
+  color: ${(props) => props.theme.MainTextColor};
 `;
 
 // margin-top: ${(props: Props) => (props.OS === "ios" ? "140px" : "80px")};
