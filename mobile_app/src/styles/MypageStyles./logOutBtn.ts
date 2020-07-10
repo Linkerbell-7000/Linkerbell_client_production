@@ -9,6 +9,6 @@ export const LogOutBtn = styled.TouchableOpacity`
 export const LogOutText = styled.Text`
   font-family: "NBold";
   font-size: 16px;
-  color: ${(props) => props.theme.MainTextColor}
+  color: ${(props) => props.theme.MainTextColor};
   line-height: ${18 * 1.6}px;
 `;

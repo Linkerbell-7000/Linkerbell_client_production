@@ -47,7 +47,7 @@ function* fetchNewUserInfo$(action: any) {
   const { payload } = action;
   try {
     const res = yield SignUpRequest(payload.signupValue);
-    const userInfo = { ...res.data };
+    const userInfo = { ...res.data, email: payload.signupValue.email };
     yield put({ type: USER_SIGNUP_SUCCESS, payload: { userInfo } });
   } catch (e) {
     console.log(e);

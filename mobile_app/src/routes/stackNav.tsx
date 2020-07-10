@@ -11,7 +11,7 @@ const StackNav = (): JSX.Element => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName="Loading"
+      initialRouteName="Welcome"
       screenOptions={{ header: () => null }}
     >
       <Stack.Screen name="Start" component={Start} />

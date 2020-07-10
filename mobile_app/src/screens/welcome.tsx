@@ -3,15 +3,18 @@ import { View, Text } from "react-native";
 import { AuthParamList } from "../models/AuthParamList";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Btn, BtnText } from "../styles/Btn";
+import useAuth from "../hooks/useAuth";
 const Welcome = ({
   navigation,
 }: {
   navigation: StackNavigationProp<AuthParamList, "Welcome">;
 }): JSX.Element => {
+  const { onLogOut } = useAuth();
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace("UserDetail");
-    }, 3000);
+      onLogOut();
+      navigation.replace("Start");
+    }, 5000);
   }, []);
   return (
     <View
@@ -26,33 +29,11 @@ const Welcome = ({
         style={{
           textAlign: "center",
           fontFamily: "NMedium",
-          fontSize: 40,
-          lineHeight: 78,
-          letterSpacing: -0.4,
-          //   marginTop: 4,
-        }}
-      >
-        🎉
-      </Text>
-      <Text
-        style={{
-          textAlign: "center",
-          fontFamily: "NMedium",
-          fontSize: 20,
-          lineHeight: 38,
-          marginBottom: 20,
-          letterSpacing: -0.4,
-        }}
-      >{`회원가입 성공!`}</Text>
-      <Text
-        style={{
-          textAlign: "center",
-          fontFamily: "NMedium",
           fontSize: 15,
           lineHeight: 26,
           letterSpacing: -0.4,
         }}
-      >{` 링커벨 회원이 되신걸 진심으로 환영합니다\n 다음은 간단한 정보를 입력하는 단계입니다`}</Text>
+      >{` 가입하신 이메일로 회원가입 확인 링크를 보냈습니다.\n 확인 후 링커벨 로그인이 가능합니다`}</Text>
     </View>
   );
 };
