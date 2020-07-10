@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Platform } from "react-native";
+import React, { useState } from "react";
+import { View, Platform, Switch } from "react-native";
 import { style } from "../styles/HomeStyles/HStyleIndex";
 import { ShortBar } from "../styles/ShortBar";
 import { LogOutBtn, LogOutText } from "../styles/MypageStyles./logOutBtn";
@@ -12,7 +12,8 @@ import {
 } from "../styles/MypageStyles./EmailView";
 import sendSignOutRequest from "../core/apis/logOut";
 import useAuth from "../hooks/useAuth";
-const { UpperText } = style;
+import useApp from "../hooks/useApp";
+const { UpperText, HContainer } = style;
 
 const Mypage = ({
   navigation,
@@ -20,6 +21,12 @@ const Mypage = ({
   navigation: StackNavigationProp<any>;
 }): JSX.Element => {
   const { onLogOut, email, isOauthLogin } = useAuth();
+  const { onDarkmode } = useApp();
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => {
+    setIsEnabled((previousState) => !previousState);
+    onDarkmode();
+  };
 
   const onEditPassword = () => {
     navigation.navigate("EditPassword");
@@ -51,14 +58,21 @@ const Mypage = ({
     }
   };
   return (
-    <View style={{ backgroundColor: "#fff", flex: 1 }}>
+    <HContainer>
       <UpperText OS={Platform.OS}>마이페이지</UpperText>
       <ShortBar />
+      <Switch
+        trackColor={{ false: "#767577", true: "#81b0ff" }}
+        thumbColor={"#f5dd4b"}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
       {renderAuthInfo()}
       <LogOutBtn onPress={handleLogOutBtnPress}>
         <LogOutText>{"로그아웃"}</LogOutText>
       </LogOutBtn>
-    </View>
+    </HContainer>
   );
 };
 

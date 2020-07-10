@@ -43,6 +43,9 @@ const Input = ({ name, onChange, value }: InputProps): JSX.Element => {
       err.email = "request wrong email signup";
       // }
     }
+    if (requestError === "이메일 인증 완료해주세요") {
+      err.email === "email confirmation is required";
+    }
     onChange({ ...value, err });
   }, [requestError]);
 
@@ -66,6 +69,13 @@ const Input = ({ name, onChange, value }: InputProps): JSX.Element => {
           );
         } else if (err.email === "request wrong email signup") {
           text = "이미 존재하는 이메일 입니다";
+          return (
+            <SubText danger={true} OS={Platform.OS}>
+              {text}
+            </SubText>
+          );
+        } else if (err.email === "email confirmation is required") {
+          text = "해당 이메일로 확인 링크를 보냈으니 확인해주세요";
           return (
             <SubText danger={true} OS={Platform.OS}>
               {text}

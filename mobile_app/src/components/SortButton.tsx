@@ -1,11 +1,13 @@
 import React from "react";
 import { TouchableWithoutFeedback } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import useApp from "../hooks/useApp";
 type Props = {
   orderType: string;
   onPress?: any;
 };
 const SortButton = ({ orderType, onPress }: Props): JSX.Element => {
+  const { isDarkmode } = useApp();
   const renderSortButton = () => {
     if (orderType === "asc") {
       return (
@@ -13,7 +15,7 @@ const SortButton = ({ orderType, onPress }: Props): JSX.Element => {
           <Ionicons
             name="ios-arrow-down"
             size={24}
-            color="black"
+            color={isDarkmode ? "#fff" : "#000"}
             style={{ marginLeft: 12, paddingTop: 4 }}
           />
         </TouchableWithoutFeedback>
@@ -24,7 +26,7 @@ const SortButton = ({ orderType, onPress }: Props): JSX.Element => {
         <Ionicons
           name="ios-arrow-up"
           size={24}
-          color="black"
+          color={isDarkmode ? "#fff" : "#000"}
           style={{
             marginLeft: 12,
             paddingTop: 4,

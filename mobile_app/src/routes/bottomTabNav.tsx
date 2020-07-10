@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Animated, StyleProp, ViewStyle } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Favorite from "../screens/favorite";
 import Home from "../screens/home";
-import Trending from "../screens/trending";
 import List from "../screens/list";
 import Mypage from "../screens/myPage";
 import useLinkData from "../hooks/useLinkData";
@@ -34,6 +33,8 @@ const HomeStack = (): JSX.Element => {
 
 const BottomTabNav = (): JSX.Element => {
   const Tab = createBottomTabNavigator();
+  const { isDarkmode } = useApp();
+  const [navColor, setNavColor] = useState("#fff");
   const {
     fetchAllList,
     updateCategoriesUrlList,
@@ -46,6 +47,10 @@ const BottomTabNav = (): JSX.Element => {
   useEffect(() => {
     updateCategoriesUrlList(all_category_url_list);
   }, [all_category_url_list]);
+  useEffect(() => {
+    if (isDarkmode) setNavColor("#1E1E1E");
+    else setNavColor("#fff");
+  }, [isDarkmode]);
 
   const renderTapBarStyle = ():
     | Animated.WithAnimatedValue<StyleProp<ViewStyle>>
@@ -55,7 +60,7 @@ const BottomTabNav = (): JSX.Element => {
       borderTopLeftRadius: 28,
       borderTopRightRadius: 28,
 
-      backgroundColor: "#fff",
+      backgroundColor: navColor,
       position: "absolute",
       bottom: 0,
       paddingBottom: 0,
@@ -78,7 +83,15 @@ const BottomTabNav = (): JSX.Element => {
         tabBarIcon: ({ focused }: NavProps) => {
           let iconName = "";
           const { name } = route;
-          const renderColor = focused ? "#4e4e4e" : "#b9b9b9";
+          const renderColor = () => {
+            if (navColor === "#1E1E1E") {
+              if (focused) return "#fff";
+              else return "#4e4e4e";
+            } else {
+              if (focused) return "#4e4e4e";
+              else return "#b9b9b9";
+            }
+          };
           if (name === "Home") {
             iconName = "home";
           } else if (name === "Favorite") {
@@ -92,7 +105,7 @@ const BottomTabNav = (): JSX.Element => {
             <MaterialCommunityIcons
               name={`${iconName}-outline`}
               size={name === "Home" ? 32 : 28}
-              color={renderColor}
+              color={renderColor()}
             />
           );
         },

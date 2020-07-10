@@ -4,5 +4,5 @@ export const LinkBox = styled.View`
   flex-direction: row;
   height: 100px;
   margin-bottom: 40px;
-  background-color: #fefefe;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;

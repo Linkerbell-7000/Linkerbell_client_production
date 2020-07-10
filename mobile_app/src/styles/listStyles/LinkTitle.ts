@@ -6,6 +6,6 @@ export const Title = styled.Text`
   padding: 0px;
   margin-bottom: 0px;
   font-size: 15px;
-  color: #3e3e3e;
+  color: ${(props) => props.theme.linkTitleColor}
   letter-spacing: -0.5px;
 `;

@@ -9,5 +9,6 @@ export const ShortBar = styled.View`
   /* margin-right: 300px; */
   width: 36px;
   /* border: 2px solid; */
+  border-bottom-color: ${(props) => props.theme.MainTextColor};
   border-bottom-width: 2px;
 `;

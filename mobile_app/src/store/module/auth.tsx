@@ -116,8 +116,8 @@ const reducer = (state = initialAuthState, action: authActions) => {
       return { ...initialAuthState };
 
     case USER_SIGNUP_SUCCESS: {
-      const { user_id } = action.payload.userInfo;
-      return { ...state, user_id };
+      const { user_id, email } = action.payload.userInfo;
+      return { ...state, user_id, email };
     }
     case USER_SIGNUP_FAILURE: {
       const { text } = action.payload;

@@ -5,12 +5,14 @@ import { RootState } from "../store/module/index";
 import {
   handleLoadDataPending,
   handleLoadDataSuccess,
+  handleDarkmode,
 } from "../store/module/app";
 
 export default function useServices() {
   const isDataLoading = useSelector(
     (state: RootState) => state.app.isDataLoading,
   );
+  const isDarkmode = useSelector((state: RootState) => state.app.isDarkmode);
   const dispatch = useDispatch();
 
   const onLoadDataPending = useCallback(() => {
@@ -19,10 +21,14 @@ export default function useServices() {
   const onLoadDataSuccess = useCallback(() => {
     dispatch(handleLoadDataSuccess());
   }, [dispatch]);
-
+  const onDarkmode = useCallback(() => {
+    dispatch(handleDarkmode());
+  }, [dispatch]);
   return {
     isDataLoading,
     onLoadDataPending,
     onLoadDataSuccess,
+    isDarkmode,
+    onDarkmode,
   };
 }
