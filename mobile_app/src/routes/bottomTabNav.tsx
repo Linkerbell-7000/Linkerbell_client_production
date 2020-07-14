@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Animated, StyleProp, ViewStyle } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import Favorite from "../screens/favorite";
 import Home from "../screens/home";
 import List from "../screens/list";
@@ -95,7 +95,7 @@ const BottomTabNav = (): JSX.Element => {
           if (name === "Home") {
             iconName = "home";
           } else if (name === "Favorite") {
-            iconName = "bookmark-multiple";
+            return <AntDesign name="staro" size={24} color={renderColor()} />;
           } else if (name === "Trending") {
             iconName = "file-document-box";
           } else if (name === "Mypage") {
@@ -104,7 +104,7 @@ const BottomTabNav = (): JSX.Element => {
           return (
             <MaterialCommunityIcons
               name={`${iconName}-outline`}
-              size={name === "Home" ? 32 : 28}
+              size={30}
               color={renderColor()}
             />
           );
