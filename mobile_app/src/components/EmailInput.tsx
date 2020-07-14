@@ -59,7 +59,7 @@ const EmailInput = ({ onChange, value }: InputProps): JSX.Element => {
         autoCapitalize="none"
         OS={Platform.OS}
         placeholder={`${placeholderKeyword}`}
-        // onChangeText={(val) => onChange({ ...value, [name]: val })}
+        onChangeText={(val) => onChange({ ...value, email: val })}
         onBlur={() => checkEmail()}
       ></InputForm>
     </InputWrapper>

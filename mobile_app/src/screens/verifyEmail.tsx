@@ -8,6 +8,8 @@ import findPassword from "../core/apis/findPassword";
 import { StackNavigationProp } from "@react-navigation/stack";
 import EmailInput from "../components/EmailInput";
 import { validateEmail } from "../core/utils/validateEmail";
+import sendSignOutRequest from "../core/apis/logOut";
+import useAuth from "../hooks/useAuth";
 
 export type FindPWType = {
   email: string;
@@ -19,6 +21,7 @@ const verifyEmail = ({
 }: {
   navigation: StackNavigationProp<any>;
 }): JSX.Element => {
+  const { onLogOut } = useAuth();
   const [value, setValue] = useState<FindPWType>({
     email: "",
     err: {},
@@ -31,7 +34,11 @@ const verifyEmail = ({
   const handlePress = async () => {
     try {
       await findPassword(value.email);
-      navigation.replace("Signin");
+      await sendSignOutRequest();
+      setTimeout(() => {
+        onLogOut();
+      }, 1000);
+      // navigation.replace("Signin");
     } catch (error) {
       console.log(error.response.status);
       if (error.response.status === 401 || error.response.status === 400) {
