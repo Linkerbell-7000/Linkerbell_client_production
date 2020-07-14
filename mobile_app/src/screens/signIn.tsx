@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { TouchableWithoutFeedback, Keyboard, Platform } from "react-native";
+import {
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform,
+  Dimensions,
+} from "react-native";
 import { AuthParamList } from "../models/AuthParamList";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { LoginValue } from "../models/LoginTypes";
 import { validateValue } from "../core/utils/validate";
 import { style } from "../styles/SigninStyles/StyleIndex";
-import { LinkToFindPW, FindPWText } from "../styles/FindPW/LinkToFindPW.ts";
+import { LinkToFindPW, FindPWText } from "../styles/FindPW/SLinkToFindPW.ts";
 
 import Input from "../components/Input";
 import Btn from "../components/Btn";
@@ -64,8 +69,11 @@ const Login = ({
           setState={setValue}
           onPress={handlePress}
         />
-        <LinkToFindPW onPress={hanldePressLinkToFindPW}>
-          <FindPWText>비밀번호 찾기</FindPWText>
+        <LinkToFindPW
+          onPress={hanldePressLinkToFindPW}
+          screenHeight={Dimensions.get("screen").height}
+        >
+          <FindPWText>비밀번호를 잊으셨나요?</FindPWText>
         </LinkToFindPW>
       </Container>
     </TouchableWithoutFeedback>

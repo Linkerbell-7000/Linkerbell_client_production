@@ -7,7 +7,7 @@ type Props = {
 export const LinkToFindPW = styled.TouchableOpacity`
   color: #000;
   top: ${(props: Props) =>
-    props.screenHeight ? props.screenHeight * 0.29 : 0}px;
+    props.screenHeight ? props.screenHeight * 0.48 : 0}px;
 `;
 export const FindPWText = styled.Text`
   font-family: "NBold";

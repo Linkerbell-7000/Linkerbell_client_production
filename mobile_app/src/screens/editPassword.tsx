@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Platform, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Dimensions,
+  View,
+} from "react-native";
 import EditPasswordInput from "../components/EditPasswordInput";
 import { EditPWType } from "../models/MyPageTypes";
 import EditPWBtn from "../components/EditPWBtn";
@@ -74,8 +80,11 @@ const EditPassword = ({
           OS={Platform.OS}
         />
         <EditPWBtn state={value} setState={setValue} onPress={handlePress} />
-        <LinkToFindPW onPress={hanldePressLinkToFindPW}>
-          <FindPWText>비밀번호 찾기</FindPWText>
+        <LinkToFindPW
+          onPress={hanldePressLinkToFindPW}
+          screenHeight={Dimensions.get("screen").height}
+        >
+          <FindPWText>비밀번호를 잊으셨나요?</FindPWText>
         </LinkToFindPW>
       </Container>
     </TouchableWithoutFeedback>
