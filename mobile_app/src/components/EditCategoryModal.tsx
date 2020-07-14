@@ -15,7 +15,7 @@ const categoryList = [
   { id: 18, name: "쇼핑", emoji: "👗" },
   { id: 11, name: "리빙", emoji: "🏡" },
   { id: 9, name: "건강", emoji: "💪" },
-  { id: 6, name: "금융\n부동산", emoji: "📈" },
+  { id: 6, name: "금융·부동산", emoji: "📈" },
   { id: 13, name: "뉴스", emoji: "🗞️" },
   { id: 3, name: "비즈니스", emoji: "💼" },
   { id: 14, name: "사회", emoji: "🏙" },

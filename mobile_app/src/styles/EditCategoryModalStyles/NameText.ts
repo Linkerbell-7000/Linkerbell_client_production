@@ -9,12 +9,8 @@ export const NameText = styled.Text`
   padding-bottom: 0px;
   text-align: center;
   line-height: ${14 * 1.6}px;
-  letter-spacing: -0.6px;
-  color: #2c2c2c;
-  background: #d0d0d0;
-  overflow: hidden;
-  border-radius: 8px;
-  padding: 4px 8px;
+  letter-spacing: -0.3px;
+  color: #000;
 `;
 
 // margin-top: ${(props: Props) => (props.OS === "ios" ? "140px" : "80px")};

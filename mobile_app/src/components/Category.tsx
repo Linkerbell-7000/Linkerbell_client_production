@@ -20,7 +20,8 @@ const Item = ({ item, onPress }: Props): JSX.Element => {
         onPress(item.category_id);
       }}
     >
-      <CategoryText>{renderCategoryText(item.category_id)}</CategoryText>
+      <CategoryText>{renderCategoryText(item.category_id).emoji}</CategoryText>
+      <CategoryText>{renderCategoryText(item.category_id).name}</CategoryText>
       <Count isnew={item.isnew}> {item.count} </Count>
     </CategoryWrapper>
   );

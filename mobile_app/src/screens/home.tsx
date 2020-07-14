@@ -83,7 +83,7 @@ const Home = ({
     <React.Fragment>
       <HContainer>
         <UpperText onPress={handleAllListbtnPress} OS={Platform.OS}>
-          전체 글 보기
+          🗄 전체 글 보기
         </UpperText>
         <ShortBar />
         <TitleText>카테고리</TitleText>

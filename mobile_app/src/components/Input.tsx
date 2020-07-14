@@ -43,8 +43,8 @@ const Input = ({ name, onChange, value }: InputProps): JSX.Element => {
       err.email = "request wrong email signup";
       // }
     }
-    if (requestError === "이메일 인증 완료해주세요") {
-      err.email === "email confirmation is required";
+    if (requestError === "check_email_verification") {
+      err.email = "email confirmation is required";
     }
     onChange({ ...value, err });
   }, [requestError]);
@@ -75,7 +75,8 @@ const Input = ({ name, onChange, value }: InputProps): JSX.Element => {
             </SubText>
           );
         } else if (err.email === "email confirmation is required") {
-          text = "해당 이메일로 확인 링크를 보냈으니 확인해주세요";
+          console.log("맞음");
+          text = "이메일 인증을 완료해주세요";
           return (
             <SubText danger={true} OS={Platform.OS}>
               {text}

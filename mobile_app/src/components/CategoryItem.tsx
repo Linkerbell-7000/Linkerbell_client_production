@@ -36,6 +36,7 @@ const CategoryItem = ({ linkId, item, closeModal }: Props): JSX.Element => {
 
   return (
     <CategoryTouch onPress={handlePress} item={item}>
+      <Emoji>{item.emoji}</Emoji>
       <NameText>{item.name}</NameText>
     </CategoryTouch>
   );
