@@ -112,7 +112,9 @@ function categoriseTags(
   category_id: number,
 ) {
   if (tags) {
-    all_tags = [...all_tags, ...tags];
+    // console.log("all_tag", all_tags, tags);
+    // all_tags = [...all_tags, ...tags];
+    all_tags.push(...tags);
     if (categories_tags[category_id]) {
       categories_tags[category_id] = [...categories_tags[category_id], ...tags];
     } else {
