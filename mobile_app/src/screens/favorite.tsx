@@ -26,9 +26,11 @@ const Favorite = (): JSX.Element => {
     text: "",
     orderType: "asc",
   });
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [isEdigTagModalVisible, setEdigTagModalVisible] = useState(false);
-  const [isDeleteLinkModalVisible, setDeleteLinkModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState<Modals>({
+    edit_tag: false,
+    edit_category: false,
+    delete_link: false,
+  });
   const [currentLinkId, setCurrentLinkId] = useState(0);
   const [currentLink, setCurrentLink] = useState<Url>();
   const { favorite_list } = useLinkData();
@@ -77,58 +79,51 @@ const Favorite = (): JSX.Element => {
   const handleSortButton = (order: string) => {
     setValue({ ...value, orderType: order });
   };
-  const handleEditCategoryModal = (id: number) => {
-    setCurrentLinkId(id);
-    setModalVisible(true);
-  };
-  const handleEditTagModal = (linkData: Url) => {
+  const handleModal = (linkData: Url, modalType: string) => {
     setCurrentLink(linkData);
-    setEdigTagModalVisible(true);
+    if (modalType === "edit_category") {
+      setModalVisible({ ...isModalVisible, edit_category: true });
+    } else if (modalType === "edit_tag") {
+      setModalVisible({ ...isModalVisible, edit_tag: true });
+    } else if (modalType === "delete_link") {
+      setModalVisible({ ...isModalVisible, delete_link: true });
+    }
   };
-  const handleDeleteLinkModal = (linkData: Url) => {
-    setCurrentLink(linkData);
-    setDeleteLinkModalVisible(true);
-  };
+
   const closeModal = () => {
-    setModalVisible(false);
+    setModalVisible({
+      edit_category: false,
+      edit_tag: false,
+      delete_link: false,
+    });
   };
-  const closeTagEditModal = () => {
-    setEdigTagModalVisible(false);
-  };
-  const closeDeleteModal = () => {
-    setDeleteLinkModalVisible(false);
-  };
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container OS={Platform.OS}>
         <Header
-          onTextChange={handleTextChange}
           category_name="즐겨찾기"
+          onTextChange={handleTextChange}
           ordered={value.orderType}
           onSort={handleSortButton}
-          length={value.cur_list.length}
+          length={value.cur_list && value.cur_list.length}
         />
-        <ShortBar style={{ marginBottom: 48 }} />
-        <LinkList
-          list={value.cur_list}
-          onCategoryEdit={handleEditCategoryModal}
-          onTagEdit={handleEditTagModal}
-          onDeleteLink={handleDeleteLinkModal}
-        />
+
+        <ShortBar />
+        <LinkList list={value.cur_list} onModal={handleModal} />
         <EditCategoryModal
-          isVisible={isModalVisible}
+          isVisible={isModalVisible.edit_category}
           toggleModal={closeModal}
-          currentLinkId={currentLinkId}
+          currentLink={currentLink}
         />
         <EditTagModal
-          isVisible={isEdigTagModalVisible}
-          toggleModal={closeTagEditModal}
+          isVisible={isModalVisible.edit_tag}
+          toggleModal={closeModal}
           currentLink={currentLink}
         />
         <DeleteLinkModal
-          isVisible={isDeleteLinkModalVisible}
-          toggleModal={closeDeleteModal}
-          currentLinkId={currentLinkId}
+          isVisible={isModalVisible.delete_link}
+          toggleModal={closeModal}
           currentLink={currentLink}
         />
       </Container>
