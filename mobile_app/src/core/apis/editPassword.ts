@@ -10,7 +10,7 @@ const editPasswordApi = async (
   const data = {
     password,
     newPassword,
-    newPasswordCheck,
+    checkPassword: newPasswordCheck,
   };
   return await Axios.patch(`${url}/users/mypage`, data);
 };
