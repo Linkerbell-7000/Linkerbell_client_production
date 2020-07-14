@@ -10,6 +10,7 @@ import Mypage from "../screens/myPage";
 import useLinkData from "../hooks/useLinkData";
 import useApp from "../hooks/useApp";
 import EditPassword from "../screens/editPassword";
+import verifyEmail from "../screens/verifyEmail";
 
 type NavProps = {
   focused: boolean;
@@ -27,6 +28,7 @@ const HomeStack = (): JSX.Element => {
       <Stack.Screen name="List" component={List} />
       <Stack.Screen name="Mypage" component={Mypage} />
       <Stack.Screen name="EditPassword" component={EditPassword} />
+      <Stack.Screen name="verifyEmail" component={verifyEmail} />
     </Stack.Navigator>
   );
 };

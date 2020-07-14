@@ -2,7 +2,7 @@
 export type EditPWType = {
   password: string;
   newPassword: string;
-  newPasswordCheck?: string;
+  newPasswordCheck: string;
   err?: any;
   [key: string]: any;
 };

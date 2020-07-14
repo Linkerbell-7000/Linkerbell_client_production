@@ -5,10 +5,12 @@ import url from "./url";
 const editPasswordApi = async (
   password: string,
   newPassword: string,
+  newPasswordCheck: string,
 ): Promise<any> => {
   const data = {
     password,
     newPassword,
+    newPasswordCheck,
   };
   return await Axios.patch(`${url}/users/mypage`, data);
 };
