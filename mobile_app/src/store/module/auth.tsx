@@ -20,6 +20,7 @@ type authState = {
   isLogin: boolean;
   err: string;
   isOauth: number;
+  activate?: number;
 };
 
 type value = {
@@ -84,6 +85,7 @@ const initialAuthState: authState = {
   isLogin: false,
   err: "",
   isOauth: 0,
+  activate: 0,
 };
 export type authActions =
   | ReturnType<typeof callLoginAPi>
@@ -100,8 +102,17 @@ export type authActions =
 const reducer = (state = initialAuthState, action: authActions) => {
   switch (action.type) {
     case USER_LOGIN_SUCCESS: {
-      const { user_id, age, gender, email } = action.payload.userInfo;
-      return { ...state, user_id, isLogin: true, age, gender, email, err: "" };
+      const { user_id, age, gender, email, activate } = action.payload.userInfo;
+      return {
+        ...state,
+        user_id,
+        isLogin: true,
+        age,
+        gender,
+        email,
+        err: "",
+        activate,
+      };
     }
     case USER_LOGIN_FAILURE: {
       const { text } = action.payload;
