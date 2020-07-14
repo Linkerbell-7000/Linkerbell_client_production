@@ -21,7 +21,7 @@ const verifyEmail = ({
 }: {
   navigation: StackNavigationProp<any>;
 }): JSX.Element => {
-  const { onLogOut } = useAuth();
+  const { onLogOut, isLogin } = useAuth();
   const [value, setValue] = useState<FindPWType>({
     email: "",
     err: {},
@@ -34,11 +34,14 @@ const verifyEmail = ({
   const handlePress = async () => {
     try {
       await findPassword(value.email);
-      await sendSignOutRequest();
-      setTimeout(() => {
-        onLogOut();
-      }, 1000);
-      // navigation.replace("Signin");
+      if (isLogin) {
+        await sendSignOutRequest();
+        setTimeout(() => {
+          onLogOut();
+        }, 1000);
+      } else {
+        navigation.replace("Start");
+      }
     } catch (error) {
       console.log(error.response.status);
       if (error.response.status === 401 || error.response.status === 400) {
