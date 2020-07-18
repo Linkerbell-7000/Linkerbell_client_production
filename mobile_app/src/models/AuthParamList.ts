@@ -6,4 +6,6 @@ export type AuthParamList = {
   Loding: undefined;
   UserDetail: undefined;
   Welcome: undefined;
+  VerifyEmail: undefined;
+  EditPassword: undefined;
 };

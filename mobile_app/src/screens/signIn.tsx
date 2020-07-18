@@ -10,7 +10,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { LoginValue } from "../models/LoginTypes";
 import { validateValue } from "../core/utils/validate";
 import { style } from "../styles/SigninStyles/StyleIndex";
-import { LinkToFindPW, FindPWText } from "../styles/FindPW/SLinkToFindPW.ts";
+import { LinkToFindPW, FindPWText } from "../styles/FindPW/SLinkToFindPW";
 
 import Input from "../components/Input";
 import Btn from "../components/Btn";
@@ -27,7 +27,13 @@ const Login = ({
     password: "",
     err: {},
   });
-  const { onLogin, isLogin, err: requestError, handleErr } = useAuth();
+  const {
+    onLogin,
+    isLogin,
+    activate,
+    err: requestError,
+    handleErr,
+  } = useAuth();
 
   useEffect(() => {
     validateValue(value, setValue);
@@ -45,7 +51,7 @@ const Login = ({
     onLogin({ email, password });
   };
   const hanldePressLinkToFindPW = (): void => {
-    navigation.navigate("verifyEmail");
+    navigation.navigate("VerifyEmail");
   };
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

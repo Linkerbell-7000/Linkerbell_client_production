@@ -16,7 +16,7 @@ export type FindPWType = {
   err?: any;
 };
 
-const verifyEmail = ({
+const VerifyEmail = ({
   navigation,
 }: {
   navigation: StackNavigationProp<any>;
@@ -62,4 +62,4 @@ const verifyEmail = ({
   );
 };
 
-export default verifyEmail;
+export default VerifyEmail;

@@ -7,7 +7,8 @@ import Loding from "../screens/loading";
 import UserDetail from "../screens/userDetail";
 import Home from "../screens/home";
 import Welcome from "../screens/welcome";
-import verifyEmail from "../screens/verifyEmail";
+import VerifyEmail from "../screens/verifyEmail";
+import EditPassword from "../screens/editPassword";
 
 const StackNav = (): JSX.Element => {
   const Stack = createStackNavigator();
@@ -23,7 +24,8 @@ const StackNav = (): JSX.Element => {
       <Stack.Screen name="UserDetail" component={UserDetail} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="verifyEmail" component={verifyEmail} />
+      <Stack.Screen name="EditPassword" component={EditPassword} />
+      <Stack.Screen name="VerifyEmail" component={VerifyEmail} />
     </Stack.Navigator>
   );
 };

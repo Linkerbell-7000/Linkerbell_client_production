@@ -1,3 +1,3 @@
-const url = "http://15.164.48.52:7000";
+const url = "https://linkerbell.kr";
 
 export default url;
