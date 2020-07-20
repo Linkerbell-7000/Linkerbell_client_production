@@ -54,7 +54,7 @@ const EditPassword = ({
   };
 
   const hanldePressLinkToFindPW = (): void => {
-    navigation.navigate("verifyEmail");
+    navigation.navigate("VerifyEmail");
   };
 
   return (

@@ -25,7 +25,7 @@ const Home = ({
   const { onHome, categories } = useLinkData();
   const [isModalVisible, setModalVisible] = useState(false);
   const { getCopiedUrl, copiedUrl } = useServices();
-  const { isOauthLogin } = useAuth();
+  const { isOauthLogin, activate } = useAuth();
   const handleAllListbtnPress = () => {
     navigation.navigate("List", { category_id: 0 });
   };
@@ -43,6 +43,13 @@ const Home = ({
     isOauthLogin && getCategoryList();
     setData(categories);
   }, []);
+
+  useEffect(() => {
+    if (activate === 2) {
+      navigation.push("EditPassword");
+      //! 다음 로그인까지 1로 변경이 안되므로 클라이언트에서 바꿔줘야함
+    }
+  });
 
   useEffect(() => {
     setData(categories);

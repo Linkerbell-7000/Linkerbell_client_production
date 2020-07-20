@@ -47,11 +47,11 @@ const Mypage = ({
       return (
         <React.Fragment>
           <EmailView>
-            <EmailText>{"이메일"}</EmailText>
+            <EmailText>{"👤  이메일"}</EmailText>
             <Email>{email}</Email>
           </EmailView>
           <EditPWBtn onPress={onEditPassword}>
-            <EmailText>{"비밀번호 수정"}</EmailText>
+            <EmailText>{"🔐  비밀번호 수정"}</EmailText>
           </EditPWBtn>
         </React.Fragment>
       );
@@ -70,7 +70,7 @@ const Mypage = ({
       />
       {renderAuthInfo()}
       <LogOutBtn onPress={handleLogOutBtnPress}>
-        <LogOutText>{"로그아웃"}</LogOutText>
+        <LogOutText>{"👋  로그아웃"}</LogOutText>
       </LogOutBtn>
     </HContainer>
   );
