@@ -7,6 +7,7 @@ import {
   signup,
   logout,
   initailizeError,
+  userEditPW,
 } from "../store/module/auth";
 import { useCallback } from "react";
 
@@ -21,6 +22,10 @@ export default function useAuth() {
   const isOauthLogin = useSelector((state: RootState) => state.auth.isOauth);
   const activate = useSelector((state: RootState) => state.auth.activate);
   const dispatch = useDispatch();
+
+  const onEditPW = useCallback(() => {
+    dispatch(userEditPW());
+  }, [dispatch]);
 
   const onLogin = useCallback(
     (loginValue) => {
@@ -66,5 +71,6 @@ export default function useAuth() {
     handleErr,
     isOauthLogin,
     activate,
+    onEditPW,
   };
 }

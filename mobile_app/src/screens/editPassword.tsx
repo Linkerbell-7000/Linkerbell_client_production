@@ -15,6 +15,7 @@ import { LinkToFindPW, FindPWText } from "../styles/FindPW/LinkToFindPW.ts";
 import editPasswordApi from "../core/apis/editPassword";
 import { validatePassword } from "../core/utils/validateEditPW";
 import { StackNavigationProp } from "@react-navigation/stack";
+import useAuth from "../hooks/useAuth";
 
 const EditPassword = ({
   navigation,
@@ -28,6 +29,7 @@ const EditPassword = ({
     newPasswordCheck: "",
     err: {},
   });
+  const { onEditPW } = useAuth();
 
   useEffect(() => {
     validatePassword(value, setValue);
@@ -40,6 +42,7 @@ const EditPassword = ({
         value.newPassword,
         value.newPasswordCheck,
       );
+      onEditPW();
       await navigation.replace("Mypage");
     } catch (error) {
       console.log(error.response.status);
