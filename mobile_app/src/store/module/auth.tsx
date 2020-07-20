@@ -11,6 +11,7 @@ export const USER_SIGNUP_FAILURE = "USER_SIGNUP_FAILURE" as const;
 export const USER_PROFILE = "USER_PROFILE" as const;
 export const USER_OAUTH_LOGIN_SUECCESS = "USER_OAUTH_LOGIN_SUECESS" as const;
 export const INIT_ERROR = "INIT_ERROR" as const;
+export const USER_EDITPW = "USER_EDITPW" as const;
 
 type authState = {
   user_id: number;
@@ -77,6 +78,10 @@ export const initailizeError = () => ({
   type: INIT_ERROR,
 });
 
+export const userEditPW = () => ({
+  type: USER_EDITPW,
+});
+
 const initialAuthState: authState = {
   user_id: -1,
   email: "",
@@ -97,7 +102,8 @@ export type authActions =
   | ReturnType<typeof userSignupFailure>
   | ReturnType<typeof profileUpdate>
   | ReturnType<typeof oauthLoginSuccess>
-  | ReturnType<typeof initailizeError>;
+  | ReturnType<typeof initailizeError>
+  | ReturnType<typeof userEditPW>;
 
 const reducer = (state = initialAuthState, action: authActions) => {
   switch (action.type) {
@@ -139,6 +145,9 @@ const reducer = (state = initialAuthState, action: authActions) => {
     }
     case INIT_ERROR: {
       return { ...state, err: "Pending" };
+    }
+    case USER_EDITPW: {
+      return { ...state, activate: 1 };
     }
     default:
       return state;
