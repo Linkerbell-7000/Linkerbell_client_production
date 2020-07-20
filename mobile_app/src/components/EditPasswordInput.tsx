@@ -67,6 +67,13 @@ const EditPasswordInput = ({
             {text}
           </SubText>
         );
+      } else if (name === "newPassword" && err[name] === "empty newPassword") {
+        text = "비밀번호는 8자 이상이어야합니다";
+        return (
+          <SubText danger={true} OS={Platform.OS}>
+            {text}
+          </SubText>
+        );
       }
     }
 
