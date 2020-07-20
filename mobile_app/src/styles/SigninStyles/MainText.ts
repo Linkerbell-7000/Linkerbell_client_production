@@ -7,5 +7,5 @@ export const MainText = styled.Text`
   margin: 0px;
   margin-top: 24%;
   margin-left: 12%;
-  color: #000;
+  color: ${(props) => props.theme.MainTextColor};
 `;
