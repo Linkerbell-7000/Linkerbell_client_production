@@ -75,7 +75,7 @@ const Input = ({ name, onChange, value }: InputProps): JSX.Element => {
             </SubText>
           );
         } else if (err.email === "email confirmation is required") {
-          console.log("맞음");
+          // console.log("맞음");
           text = "이메일 인증을 완료해주세요";
           return (
             <SubText danger={true} OS={Platform.OS}>

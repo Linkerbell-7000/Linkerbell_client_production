@@ -18,7 +18,6 @@ const RadioButtons = ({ value, setValue }: RadioProps): JSX.Element => {
         onChange={(index) => {
           setSelectedIndex(index);
           setValue({ ...value, gender: index });
-          console.log(index);
         }}
       >
         <Radio style={styles.radio}>여성</Radio>

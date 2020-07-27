@@ -30,8 +30,6 @@ function* fetchUserInfo$(action: any) {
   const { email } = action.payload.loginValue;
   try {
     const res = yield callLoginApi(payload.loginValue);
-    console.log(res);
-    console.log(res.data);
     const userInfo = { email, ...res.data };
     const categoryData = yield fetchCategoryRequest();
     sortCategory(categoryData);

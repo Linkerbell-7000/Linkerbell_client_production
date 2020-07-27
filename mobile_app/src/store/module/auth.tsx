@@ -126,7 +126,7 @@ const reducer = (state = initialAuthState, action: authActions) => {
     }
     case USER_OAUTH_LOGIN_SUECCESS: {
       const { user_id } = action.payload;
-      console.log(user_id);
+      // console.log(user_id);
       return { ...state, user_id, isLogin: true, isOauth: 1 };
     }
     case USER_LOGOUT:

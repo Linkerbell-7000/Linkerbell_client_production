@@ -42,8 +42,8 @@ const UserDetail = ({
     };
     try {
       const res = await ProfileRequest(data);
-      console.log("button clicked");
-      console.log("res", res);
+      // console.log("button clicked");
+      // console.log("res", res);
       updateProfile();
       navigation.navigate("Start");
     } catch (error) {

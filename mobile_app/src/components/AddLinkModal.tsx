@@ -29,7 +29,7 @@ const AddLinkModal = ({
     try {
       const res = await postUrl(copiedUrl);
       await onReload();
-      console.log(res);
+      // console.log(res);
       const result = { ...res, tags: [] };
       await onAddLink(result);
       await _setContent();
