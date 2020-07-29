@@ -58,7 +58,7 @@ const Start = ({
         style={{ alignSelf: "center" }}
       />
       <BtnWrapper>
-        <LoginBox
+        {/* <LoginBox
           name="Facebook으로 로그인"
           onPress={handleFacebookLogin}
           route={"facebook"}
@@ -67,7 +67,7 @@ const Start = ({
           name="Google로 로그인"
           onPress={handleGoogleLogin}
           route={"google"}
-        />
+        /> */}
         <LoginBox
           name="이메일로 로그인"
           onPress={handlePressLoginBtn}

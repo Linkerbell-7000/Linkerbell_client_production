@@ -24,6 +24,9 @@
       },
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.team7000.linkerbell"
+    },
     "description": ""
   }
 }
