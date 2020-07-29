@@ -14,5 +14,5 @@ export const FindPWText = styled.Text`
   margin-left: 60px;
   font-size: 14px;
   line-height: ${14 * 1.4}px;
-  color: #000;
+  color: ${(props) => props.theme.MainTextColor};
 `;
