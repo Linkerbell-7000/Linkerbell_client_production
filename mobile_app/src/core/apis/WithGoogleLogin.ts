@@ -9,7 +9,7 @@ const signInWithGoogleAsync = async (): Promise<any> => {
     });
 
     if (result.type === "success") {
-      console.log(result);
+      // console.log(result);
       const { idToken } = result;
       return idToken;
     } else {

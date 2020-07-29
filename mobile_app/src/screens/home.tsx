@@ -47,7 +47,6 @@ const Home = ({
   useEffect(() => {
     if (activate === 2) {
       navigation.push("EditPassword");
-      //! 다음 로그인까지 1로 변경이 안되므로 클라이언트에서 바꿔줘야함
     }
   });
 

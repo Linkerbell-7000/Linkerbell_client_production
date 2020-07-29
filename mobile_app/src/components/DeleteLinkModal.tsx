@@ -55,12 +55,12 @@ const DeleteLinkModal = ({
         <Title>이 글을 삭제하시겠습니까?</Title>
         <Link>{renderTitle()}</Link>
         <ButtonWrapper>
-          <TouchableOpacity onPress={() => console.log("삭제버튼클릭")}>
+          <TouchableOpacity /* onPress={() => console.log("삭제버튼클릭")} */>
             <Text style={styles.delete} onPress={handlePress}>
               삭제
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => console.log("취소버튼클릭")}>
+          <TouchableOpacity /* onPress={() => console.log("취소버튼클릭")} */>
             <Text style={styles.cancel} onPress={toggleModal}>
               취소
             </Text>
