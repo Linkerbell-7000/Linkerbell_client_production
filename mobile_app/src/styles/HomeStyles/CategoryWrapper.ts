@@ -7,7 +7,7 @@ type Props = {
 
 export const CategoryWrapper = styled.TouchableOpacity`
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   margin-left: 10%;
   /* height: 11%; */
