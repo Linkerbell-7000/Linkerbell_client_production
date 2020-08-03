@@ -3,7 +3,7 @@
     "name": "LinkerBell",
     "slug": "LinkerBell",
     "platforms": ["ios", "android", "web"],
-    "version": "1.0.1",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "splash": {
@@ -25,7 +25,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.team7000.linkerbell"
+      "package": "kr.team7000.linkerbell"
     },
     "description": "Linkerbell is a mobile bookmark application that allows you to easily save links and orginize them through categorization"
   }
