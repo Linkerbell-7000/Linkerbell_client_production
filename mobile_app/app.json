@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "LinkerBell",
+    "slug": "LinkerBell",
+    "platforms": ["ios", "android", "web"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "bundleIdentifier": "expo.exp.exponent",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "586259967632-jq36j98db3m26aqu2i5c614rpruuvnel.apps.googleusercontent.com"
+        }
+      },
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "kr.team7000.linkerbell"
+    },
+    "description": "Linkerbell is a mobile bookmark application that allows you to easily save links and orginize them through categorization"
+  }
+}
